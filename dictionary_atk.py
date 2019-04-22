@@ -17,7 +17,7 @@ elif choice.lower().strip() == 'password' or choice.lower() == 'pass' or choice.
     pass_in.strip()
     h.update(pass_in.encode('utf-8'))
     pass_in = h.hexdigest()
-    print(pass_in)
+    # print(pass_in)
 
 else:
     print(colored("\nThe choice you entered is not available.", 'red'))
@@ -35,14 +35,13 @@ for password in passFile:
     password = password.strip()
     setpass = password.encode('utf-8')
     hash_object = hashlib.sha256(setpass)
-    filemd5 = hash_object.hexdigest()
-
+    fileSHA = hash_object.hexdigest()
     print(colored('Trying password #%d: %s' % (counter,password.strip()),'cyan'))
-
+    # print(fileSHA)
 
     counter += 1
     #point of comparison
-    if pass_in.lower() == filemd5:
+    if pass_in.lower() == fileSHA:
         print(colored('\nMatch found! \nPassword is: %s' % password, 'green'))
         break
 
