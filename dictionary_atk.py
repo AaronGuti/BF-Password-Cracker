@@ -6,7 +6,7 @@ from termcolor import colored
 counter = 1
 h = hashlib.sha256()
 # Give user the choice to enter a hash as would typically be acquired or a plain password
-choice = input(colored('Would you like to use a hash or a password? ', attrs=['bold']))
+choice = input(colored('Would you like to use a hash or enter a password? ', attrs=['bold']))
 
 if choice.lower().strip() == 'hash' or choice.lower() == '4/20':
     pass_in = input("Please enter a SHA256 hash: ")
