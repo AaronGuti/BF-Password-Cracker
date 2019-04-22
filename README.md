@@ -11,7 +11,7 @@ A dictionary attack is based on trying all the strings in a pre-arranged listing
   - hashlib
   - itertools
   - math
-  - os 
+  - os (ony used for an alert on OSX)
   - time
   
 ### passCrack.py (long time)
