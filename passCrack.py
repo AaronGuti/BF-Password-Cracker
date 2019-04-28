@@ -6,12 +6,12 @@ import platform
 # helps separate text visually
 from termcolor import colored
 
-#TODO: Shorten character check with regex
 
-def main():
-    
+# TODO: Shorten character check with regex
+
+def passCrack(password):
     string_type = ''
-    password = input("Please enter your password: ")
+    # password = input("Please enter your password: ")
     wait(1)
     customize = input(
         "Would you like to customize the program to make it take shorter/longer to find your password? (suggested) ").lower()
@@ -27,7 +27,7 @@ def main():
         set_num = False
         set_symbols = False
 
-        #double checks what is in the password and ensures that the program will search for all element present
+        # double checks what is in the password and ensures that the program will search for all element present
         if "A" in password or "B" in password or "C" in password or "D" in password or "E" in password or "F" in password or "G" in password or "H" in password or "I" in password or "J" in password or "K" in password or "L" in password or "M" in password or "N" in password or "O" in password or "P" in password or "Q" in password or "R" in password or "S" in password or "T" in password or "U" in password or "V" in password or "W" in password or "X" in password or "Y" in password or "Z" in password:
             using_caps = True
         if "a" in password or "b" in password or "c" in password or "d" in password or "e" in password or "f" in password or "g" in password or "h" in password or "i" in password or "j" in password or "k" in password or "l" in password or "m" in password or "n" in password or "o" in password or "p" in password or "q" in password or "r" in password or "s" in password or "t" in password or "u" in password or "v" in password or "w" in password or "x" in password or "y" in password or "z" in password:
@@ -99,7 +99,7 @@ def main():
         if "?" in password:
             symbols = True
 
-        #Options to shorten search time.
+        # Options to shorten search time.
         print("Please type in the number of the characters you would like the program to test for:")
         wait(1)
         print("1. Lowercase letters")
@@ -113,19 +113,19 @@ def main():
         if selection == 1:
             string_type += "abcdefghijklmnopqrstuvwxyz"
             set_lower = True
-        
+
         elif selection == 2:
             string_type += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             set_caps = True
-        
+
         elif selection == 3:
             string_type += "1234567890"
             set_num = True
-        
+
         elif selection == 4:
             string_type += "`~!@#$%^&*()_+-=[]{};:'\"|,.<>/?\" "
             set_symbols = True
-        
+
         elif selection == 5:
             string_type += "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_+-=[]{};:'\"|,.<>/?\\ "
             set_lower = True
@@ -136,46 +136,48 @@ def main():
         # actual check to ensure all elements are searched and proper search options are active
         if using_lower == True and set_lower == False:
             print()
-            print(colored("Your password contains lowercase characters, but the program isn't set to look for them.","red"))
+            print(colored("Your password contains lowercase characters, but the program isn't set to look for them.",
+                          "red"))
             wait(1)
             print(colored("This means that the program will never find your password", "red"))
             wait(1)
-            
+
             lower = input("Turn on lowercase characters? ").lower()
             if lower == "yes" or lower == "yea" or lower == "yeah" or lower == "sure":
                 string_type += "abcdefghijklmnopqrstuvwxyz"
                 print()
                 print(colored("Using lowercase letters.", "green"))
                 wait(1)
-        
+
         if using_caps == True and set_caps == False:
             print()
-            print(colored("Your password contains uppercase characters, but the program isn't set to look for them.","red"))
+            print(colored("Your password contains uppercase characters, but the program isn't set to look for them.",
+                          "red"))
             wait(1)
             print(colored("This means that the program will never find your password", "red"))
             wait(1)
-            
+
             caps = input("Turn on uppercase characters? ").lower()
             if caps == "yes" or caps == "yea" or caps == "yeah" or caps == "sure":
                 string_type += "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 print()
                 print(colored("Using uppercase letters.", "green"))
                 wait(1)
-        
+
         if using_nums == True and set_num == False:
             print()
             print(colored("Your password contains numbers, but the program isn't set to look for them.", "red"))
             wait(1)
             print(colored("This means that the program will never find your password", "red"))
             wait(1)
-            
+
             nums = input("Turn on numbers? ").lower()
             if nums == "yes" or nums == "yea" or nums == "yeah" or nums == "sure":
                 string_type += "1234567890"
                 print()
                 print(colored("Using numbers.", "green"))
                 wait(1)
-        
+
         if symbols == True and set_symbols == False:
             print()
             print(colored("Your password contains symbols, but the program isn't set to look for them.", "red"))
@@ -207,14 +209,15 @@ def main():
         else:
             sec = "seconds"
         print()
-        #some kind of alert since it takes a while
+        # some kind of alert since it takes a while
         if platform.system() == 'Darwin':
             os.system('say "Password Cracked"')
-        print(colored("Cracked the password %s in %s tries and %s %s!" % (password, tries, time_amount1, sec),"green"))
+        print(colored("Cracked the password %s in %s tries and %s %s!" % (password, tries, time_amount1, sec), "green"))
         wait(1)
         tries = tries / time_amount
         tries = math.ceil(tries)
         print(colored("That's approximately %s guessed passwords per second!" % (tries), "green"))
+
 
 # Brute force function
 def tryPassword(passwordSet, string_typeSet):
@@ -254,12 +257,9 @@ def tryPassword(passwordSet, string_typeSet):
                 distance = end - start
                 return (attempts, distance)
 
+
 def wait(amount):
     time.sleep(amount)
     print()
-
-
-main()
-
 
 

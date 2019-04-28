@@ -1,7 +1,7 @@
 import hashlib
 import time
+from passCrack import passCrack
 from termcolor import colored
-
 
 counter = 1
 h = hashlib.sha256()
@@ -13,9 +13,9 @@ if choice.lower().strip() == 'hash' or choice.lower() == '4/20':
 
 #hashes a user entered password
 elif choice.lower().strip() == 'password' or choice.lower() == 'pass' or choice.lower() == 'enter a password':
-    pass_in = input("Please enter a password: ")
-    pass_in.strip()
-    h.update(pass_in.encode('utf-8'))
+    password_in = input("Please enter a password: ")
+    password_in.strip()
+    h.update(password_in.encode('utf-8'))
     pass_in = h.hexdigest()
     # print(pass_in)
 
@@ -47,4 +47,12 @@ for password in passFile:
 
 else:
     print('Password not found.')
-    
+    if choice.lower().strip() == 'password' or choice.lower() == 'pass' or choice.lower() == 'enter a password':
+      print(password_in)
+      choice2 = input("Would you like to attempt to brute force the password? ")
+
+      if choice2.lower().strip() == 'yes':
+        passCrack(password_in)
+
+      if choice2.lower().strip() == 'no':
+        print('oof')
