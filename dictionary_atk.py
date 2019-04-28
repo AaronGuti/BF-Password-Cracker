@@ -55,4 +55,4 @@ else:
         passCrack(password_in)
 
       if choice2.lower().strip() == 'no':
-        print('oof')
+        exit()
