@@ -18,3 +18,9 @@ A dictionary attack is based on trying all the strings in a pre-arranged listing
 This program exhaustively goes through every password possible until it matches the password that was entered by the user. The program keeps track of how many attempts are made as well as the time it takes to successfully guess the password.
 ### dictionary_atk.py (short time)
 This program uses a newline separated file of common passwords to assist in guessing passwords. Typically when passwords are acquired they are hashed, so the user has the option to enter a hash as well as a plain text password that will be hashed after entering. The user input is then tested against all the password in the file that are hashed in the search. If the user input is contained in the file then a match will be found!
+
+
+
+
+
+# REPORT
