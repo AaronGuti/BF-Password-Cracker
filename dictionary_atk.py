@@ -31,6 +31,7 @@ except:
     quit()
 
 #iterates through the file of common passwords and hashes them in SHA256
+start = time.time()
 for password in passFile:
     password = password.strip()
     setpass = password.encode('utf-8')
@@ -41,14 +42,17 @@ for password in passFile:
 
     counter += 1
     #point of comparison
-    if pass_in.lower() == fileSHA:
-        print(colored('\nMatch found! \nPassword is: %s' % password, 'green'))
+    if pass_in.lower().strip() == fileSHA:
+        end = time.time()
+        distance = end - start
+
+        print(colored('\nMatch found! \nPassword is: %s' %password, 'green'))
+        print(colored("Password was cracked in %f seconds!" %distance, 'green'))
         break
 
 else:
-    print('Password not found.')
+    print(colored('Password not found.\n', 'red'))
     if choice.lower().strip() == 'password' or choice.lower() == 'pass' or choice.lower() == 'enter a password':
-      print(password_in)
       choice2 = input("Would you like to attempt to brute force the password? ")
 
       if choice2.lower().strip() == 'yes':
