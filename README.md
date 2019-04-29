@@ -7,7 +7,7 @@ A dictionary attack is based on trying all the strings in a pre-arranged listing
 ## Requirements 
 * Python 3.6 
 *The following packages installed:
-  - colored (who doesn't like color coding)
+  - termcolor (who doesn't like color coding)
   - hashlib
   - itertools
   - math
